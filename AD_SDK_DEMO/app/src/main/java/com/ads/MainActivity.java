@@ -1,4 +1,4 @@
-package ads.client.afk.com.demo;
+package com.ads;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
