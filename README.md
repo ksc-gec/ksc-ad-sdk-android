@@ -1,1 +1,0 @@
-# ksc-ad-sdk-android
