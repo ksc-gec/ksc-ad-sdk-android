@@ -2,9 +2,11 @@
 
 **2017-12-19 V1.0.0 版本 - 汤洛**
 1.初版更新
+
 **2017-12-27 V1.1.0 版本 - 汤洛**
 1.修改部分接口
 2.添加SDK配置项接口说明
+
 **2017-1-5 V1.2.0 版本 - 汤洛**
 1.添加生命周期及清除缓存接口
 
@@ -12,8 +14,10 @@
 
 [TOC]
 
-###1、SDK对外接口
-####1.1 初始化接口
+### 1、SDK对外接口
+
+#### 1.1 初始化接口
+
 **接口名称**：
 init
 
@@ -47,7 +51,8 @@ public interface IKsyunAdInitResultListener {
 | errCode| int | SDK错误码|
 | errMsg| String | SDK错误详情|
 
-####1.2 预加载广告资源接口
+#### 1.2 预加载广告资源接口
+
 **接口名称**：
 preloadAd
 
@@ -80,7 +85,8 @@ public interface IKsyunAdPreloadListener {
 | errCode| int | 失败时错误码|
 | errMsg| String | 失败时错误详情|
 
-####1.3 判断某广告位是否存在广告接口
+#### 1.3 判断某广告位是否存在广告接口
+
 **接口名称**：
 hasAd
 
@@ -114,7 +120,8 @@ public interface IKsyunAdExistListener {
 | errCode| int | 失败时错误码|
 | errMsg| String | 失败时错误详情|
 
-####1.4 显示某广告位对应广告接口
+#### 1.4 显示某广告位对应广告接口
+
 **接口名称**：
 showAd
 
@@ -127,7 +134,8 @@ void showAd(Activity activity, String adSlotId);
 | activity| Activity |当前所在的activity，用于页面跳转|
 | adSlotId| String |当前广告位Id|
 
-####1.5 设置奖励视频结果监听接口
+#### 1.5 设置奖励视频结果监听接口
+
 **接口名称**：
 setRewardVideoAdListener
 
@@ -158,7 +166,8 @@ public interface IKsyunRewardVideoAdListener {
 | errMsg| String | 失败时错误详情|
 
 
-####1.6 设置广告事件监听接口
+#### 1.6 设置广告事件监听接口
+
 **接口名称**：
 setAdListener
 
@@ -194,7 +203,8 @@ public interface IKsyunAdListener {
 | errCode| int | 失败时错误码|
 | errMsg| String | 失败时错误详情|
 
-####1.7 移除广告事件监听
+#### 1.7 移除广告事件监听
+
 **接口名称**：
 removeAdListener
 
@@ -206,7 +216,8 @@ void removeAdListener();
 | ---- | ---- |
 | void |无|
 
-####1.8 移除奖励视频结果监听接口
+#### 1.8 移除奖励视频结果监听接口
+
 **接口名称**：
 removeRewardVideoAdListener
 
@@ -218,7 +229,7 @@ void removeRewardVideoAdListener();
 | ---- | ---- |
 | void |无|
 
-####1.9 移除所有事件监听接口
+#### 1.9 移除所有事件监听接口
 **接口名称**：
 removeAllListener
 
@@ -230,7 +241,7 @@ void removeAllListener();
 | ---- | ---- |
 | void |无|
 
-####1.10 获取SDK版本号接口
+#### 1.10 获取SDK版本号接口
 **接口名称**：
 getSdkVersion
 
@@ -242,7 +253,7 @@ String getSdkVersion();
 | ---- | ---- |
 | String |SDK当前版本号，eg: "4.0.0"|
 
-####1.11 清除SDK已缓存广告资源
+#### 1.11 清除SDK已缓存广告资源
 **接口名称**：
 clearCache
 
@@ -254,7 +265,7 @@ void clearCache();
 | ---- | ---- |
 | void |无|
 
-####1.12 宿主Activity生命周期onResume回调
+#### 1.12 宿主Activity生命周期onResume回调
 **接口名称**：
 onResume
 
@@ -271,7 +282,7 @@ void onResume(Activity activity);
 | ---- | ---- |
 | void |无|
 
-####1.13 宿主Activity生命周期onPause回调
+#### 1.13 宿主Activity生命周期onPause回调
 **接口名称**：
 onPause
 
@@ -288,7 +299,7 @@ void onPause(Activity activity);
 | ---- | ---- |
 | void |无|
 
-####1.14 宿主Activity生命周期onDestroy回调
+#### 1.14 宿主Activity生命周期onDestroy回调
 **接口名称**：
 onDestroy
 
@@ -305,8 +316,10 @@ void onDestroy(Activity activity);
 | ---- | ---- |
 | void |无|
 
-###2、SDK配置项接口
-####2.1 设置SDK请求环境
+### 2、SDK配置项接口
+
+#### 2.1 设置SDK请求环境
+
 **接口名称**：
 setSdkEnvironment
 
@@ -324,7 +337,8 @@ public void setSdkEnvironment(int environment);
 | ---- | ---- | ---- |
 | environment| int |0开发环境，1测试环境，2线上环境，3沙盒环境|
  
-####2.2 设置是否允许奖励视频广告，中途出现关闭按钮
+#### 2.2 设置是否允许奖励视频广告，中途出现关闭按钮
+
 **接口名称**：
 setShowCloseBtnOfRewardVideo
 
@@ -340,7 +354,8 @@ void setShowCloseBtnOfRewardVideo(boolean isShow);
 | ---- | ---- | ---- |
 | isShow| boolean |true允许出现关闭，false不允许|
 
-####2.3 设置奖励视频广告，中途出现关闭按钮时机
+#### 2.3 设置奖励视频广告，中途出现关闭按钮时机
+
 **接口名称**：
 setCloseBtnComingTimeOfRewardVideo
 
@@ -356,7 +371,8 @@ void setCloseBtnComingTimeOfRewardVideo(int second);
 | ---- | ---- | ---- |
 | second| int |出现关闭按钮时机，单位为秒|
  
-####2.4 设置SDK单个通用配置项接口
+#### 2.4 设置SDK单个通用配置项接口
+
 **接口名称**：
 setSingleConfig
 
@@ -373,7 +389,8 @@ public void setSingleConfig(String key, Object value);
 | key| String |配置项对应Key，具体可以设置的值，参见附录1|
 | value| String |配置项对应取值|
 
-###3、错误码定义
+### 3、错误码定义
+
 SDK错误码定义如下：
 
 | 错误码 | 描述|
@@ -396,8 +413,10 @@ SDK错误码定义如下：
 
 
 
-###4、附录
-####4.1、附录1 - SDK配置项键值定义
+### 4、附录
+
+#### 4.1、附录1 - SDK配置项键值定义
+
 | Key类型 | Key取值|Value类型|Value描述|
 | ---- | ---- | ---- |---- |
 | String| KeySdkEnv | int|0开发环境，1测试环境，2生产环境，3沙箱环境 |
@@ -405,7 +424,8 @@ SDK错误码定义如下：
 | String | KeyCloseComingTime | int | 奖励视频中途显示关闭按钮实际，单位为秒|
 | String | KeyEnableSdkRequestPermission | boolean | true允许SDK主动向用户申请动态权限，false不允许 |
 
-####4.2、附录2 - SDK初始化回调Map键值定义
+#### 4.2、附录2 - SDK初始化回调Map键值定义
+
 | Key类型 | Key取值|Value类型|Value描述|
 | ---- | ---- | ---- |---- |
 | String| KeyAdSlots | String|对应初始化appId的所有广告位信息，以JSON数组形式呈现 |
