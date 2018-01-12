@@ -35,13 +35,15 @@
         <activity android:name=".ui.AdInfoActivity"/>
 
         <activity
-        android:name="com.ksc.ad.sdk.ui.AdProxyActivity"
-        android:configChanges="keyboardHidden|orientation|screenSize"/>
+            android:name="com.ksc.ad.sdk.ui.AdProxyActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
-        android:name="com.ksc.ad.sdk.ui.AdPermissionProxyActivity"
-        android:configChanges="keyboardHidden|orientation|screenSize"
-        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
-        />
+            android:name="com.ksc.ad.sdk.ui.AdPermissionProxyActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
+        <service android:name="com.ksc.ad.sdk.service.AdProxyService" />
 
         <service android:name="com.ksc.ad.sdk.service.AdProxyService"/>
 
