@@ -34,7 +34,6 @@
         <activity android:name=".ui.statis.EventLogActivity"/>
         <activity android:name=".ui.AdInfoActivity"/>
 
-        使用jar 包的集成方式，需要添加以下信息
         <activity
         android:name="com.ksc.ad.sdk.ui.AdProxyActivity"
         android:configChanges="keyboardHidden|orientation|screenSize"/>
@@ -45,7 +44,6 @@
         />
 
         <service android:name="com.ksc.ad.sdk.service.AdProxyService"/>
-        end
 
         <provider
             android:name="android.support.v4.content.FileProvider"
