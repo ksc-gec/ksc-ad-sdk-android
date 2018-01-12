@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/item_ad_list_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_ad_list_id_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="广告ID:123456789"
+                android:textColor="@color/color_222222"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/item_ad_list_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxLines="1"
+                android:text="广告位名称"
+                android:textColor="@color/color_222222"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/item_ad_list_type_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="广告位类型"
+                android:textColor="@color/color_222222"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/item_ad_list_status_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="广告位状态"
+                android:textColor="@color/color_222222"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_ad_list_play_tv"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="播放"
+            android:textColor="@color/color_FFFFFF"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/item_ad_list_play_jump_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ksc_icon_jump"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <include layout="@layout/base_divide_line"/>
+
+</LinearLayout>

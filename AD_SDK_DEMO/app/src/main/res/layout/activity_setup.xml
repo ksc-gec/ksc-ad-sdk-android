@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/base_action_bar_view"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="设置AppId"
+                    android:textColor="@color/color_000000"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/setup_app_id_et"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:ems="6"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textColorHint="@color/color_888888"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="设置环境"
+                    android:textColor="@color/color_000000"
+                    android:textSize="18dp"/>
+
+                <Spinner
+                    android:id="@+id/setup_env_spn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="奖励视频是否显示关闭按钮"
+                    android:textColor="@color/color_000000"
+                    android:textSize="18dp"/>
+
+                <Switch
+                    android:id="@+id/setup_close_swh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="关闭按钮展示时机(秒)"
+                    android:textColor="@color/color_000000"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/setup_show_second_et"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:ems="3"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:textColorHint="@color/color_888888"/>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ac_setup_clear_cache_tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="清空缓存"
+            android:textColor="@color/color_FFFFFF"
+            android:textSize="18dp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

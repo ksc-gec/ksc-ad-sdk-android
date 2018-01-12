@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+#-keepclassmembers class **.R$* {
+#    public static <fields>;
+#}
+#
+#-dontwarn com.ksc.ad.sdk.R$id
+#-dontwarn com.ksc.ad.sdk.R
+-keep

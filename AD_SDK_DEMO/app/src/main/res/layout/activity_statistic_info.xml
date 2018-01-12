@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/base_action_bar_view"/>
+
+    <RelativeLayout
+        android:id="@+id/ac_statistic_device_info_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/ac_statistic_device_info_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ksc_icon_device_info"/>
+
+        <TextView
+            android:id="@+id/ac_statistic_device_info_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/ac_statistic_device_info_iv"
+            android:gravity="center"
+            android:text="设备信息"
+            android:textColor="@color/color_000000"
+            android:textSize="18dp"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ksc_icon_jump"/>
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/base_divide_line"/>
+
+    <RelativeLayout
+        android:id="@+id/ac_statistic_event_note_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/ac_statistic_event_note_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ksc_icon_event_log"/>
+
+        <TextView
+            android:id="@+id/ac_statistic_event_note_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/ac_statistic_event_note_iv"
+            android:gravity="center"
+            android:text="行为日志"
+            android:textColor="@color/color_000000"
+            android:textSize="18dp"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ksc_icon_jump"/>
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/base_divide_line"/>
+
+</LinearLayout>
