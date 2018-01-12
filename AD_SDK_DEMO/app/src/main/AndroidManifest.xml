@@ -34,18 +34,20 @@
         <activity android:name=".ui.statis.EventLogActivity"/>
         <activity android:name=".ui.AdInfoActivity"/>
 
-        <activity
-            android:name="com.ksc.ad.sdk.ui.AdProxyActivity"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity
-            android:name="com.ksc.ad.sdk.ui.AdPermissionProxyActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <!--jar 方式集成需要添加的代码-->
+        <!--<activity-->
+            <!--android:name="com.ksc.ad.sdk.ui.AdProxyActivity"-->
+            <!--android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize" />-->
+        <!--<activity-->
+            <!--android:name="com.ksc.ad.sdk.ui.AdPermissionProxyActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />-->
 
-        <service android:name="com.ksc.ad.sdk.service.AdProxyService" />
+        <!--<service android:name="com.ksc.ad.sdk.service.AdProxyService" />-->
 
-        <service android:name="com.ksc.ad.sdk.service.AdProxyService"/>
+        <!--<service android:name="com.ksc.ad.sdk.service.AdProxyService"/>-->
+        <!--jar end-->
 
         <provider
             android:name="android.support.v4.content.FileProvider"
