@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initSdk() {
         KsyunAdSdkConfig config = new KsyunAdSdkConfig();
 
-        int env = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_ENV, 0);
+        int env = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_ENV, KsyunAdSdkConfig.TEST_ENV);
         boolean isShow = PreferencesUtil.getBoolean(this, DemoConstants.KEY_SDK_SHOW_CLOSE, true);
         int second = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_SHOW_TIME, 5);
         String appId = PreferencesUtil.getString(this, DemoConstants.KEY_APP_ID, APP_ID);
