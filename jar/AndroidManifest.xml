@@ -37,6 +37,7 @@
         <!--jar 方式集成需要添加的代码-->
         <activity
             android:name="com.ksc.ad.sdk.ui.AdProxyActivity"
+            android:hardwareAccelerated="true"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
