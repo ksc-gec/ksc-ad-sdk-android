@@ -1,8 +1,10 @@
 package com.ads.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,7 +13,8 @@ import com.ads.R;
 import com.ads.adlist.AdInfo;
 import com.ads.utils.ActionBarUtils;
 import com.ads.utils.DemoConstants;
-import com.ksc.ad.sdk.IKsyunAdExistListener;
+import com.ksc.ad.sdk.IKsyunAdListener;
+import com.ksc.ad.sdk.IKsyunAdPreloadListener;
 import com.ksc.ad.sdk.KsyunAdSdk;
 
 /**
@@ -42,7 +45,10 @@ public class AdInfoActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void initData() {
-        mAdInfo = getIntent().getParcelableExtra(DemoConstants.KEY_AD_INFO);
+        Intent intent = getIntent();
+        intent.setExtrasClassLoader(AdInfo.class.getClassLoader());
+        mAdInfo = intent.getParcelableExtra(DemoConstants.KEY_AD_INFO);
+
         if (null != mAdInfo) {
             hasAd(mAdInfo.adslot_id);
             mAdIdTv.setText(String.valueOf("广告位ID：" + mAdInfo.adslot_id));
@@ -69,6 +75,7 @@ public class AdInfoActivity extends AppCompatActivity implements View.OnClickLis
         mPlayTv = findViewById(R.id.item_ad_list_play_tv);
         mPlayTv.setAlpha(0.4f);
         mPlayTv.setOnClickListener(this);
+        setAdListener();
     }
 
     @Override
@@ -76,6 +83,7 @@ public class AdInfoActivity extends AppCompatActivity implements View.OnClickLis
         int id = v.getId();
         if (id == mPlayTv.getId()) {
             if (mAdInfo.isHasAd) {
+                finish();
                 playAdVideo(mAdInfo.adslot_id);
             } else {
                 showToast("没有广告");
@@ -83,24 +91,103 @@ public class AdInfoActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void hasAd(String adslot_id) {
-        KsyunAdSdk.getInstance().hasAd(adslot_id, new IKsyunAdExistListener() {
+    private void hasAd(final String adslot_id) {
+        //                if (KsyunAdSdk.getInstance().hasAd(adslot_id)) {
+        //                    mAdInfo.isHasAd = true;
+        //                    mPlayTv.setAlpha(1.0f);
+        //                    if (mIsOneStep) {
+        //                        playAdVideo(mAdInfo.adslot_id);
+        //                    }
+        //                } else {
+        //                    runOnUiThread(new Runnable() {
+        //                        @Override
+        //                        public void run() {
+        //                            showToast("没有广告");
+        //        preLoadNextAd(adslot_id);
+        //                        }
+        //                    });
+        //                }
+        if (KsyunAdSdk.getInstance().hasLocalAd(adslot_id)) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mAdInfo.isHasAd = true;
+                    mPlayTv.setAlpha(1.0f);
+                        finish();
+                        playAdVideo(mAdInfo.adslot_id);
+                }
+            });
+        } else {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    showToast("本地没有已缓存广告");
+                    preLoadNextAd(adslot_id);
+                }
+            });
+        }
 
-            @Override
-            public void onAdExist() {
-                        mAdInfo.isHasAd = true;
-                        mPlayTv.setAlpha(1.0f);
-            }
-
-            @Override
-            public void onNoAd(final int errCode, final String errMsg) {
-                        showToast("没有广告" + errCode + errMsg);
-            }
-        });
     }
 
     private void playAdVideo(String adSlotId) {
         KsyunAdSdk.getInstance().showAd(this, adSlotId);
+    }
+
+
+    /**
+     * 奖励视频播放监听
+     */
+    private void setAdListener() {
+        KsyunAdSdk.getInstance().setAdListener(new IKsyunAdListener() {
+            @Override
+            public void onShowSuccess(String adSlotId) {
+                Log.d(DemoConstants.INIT, "onShowSuccess : " + adSlotId);
+            }
+
+            @Override
+            public void onShowFailed(String adSlotId, int erroCode, String erroMsg) {
+                //播放失败,预加载下一个奖励视频
+                Log.d(DemoConstants.INIT, "onShowFailed :  adSlotId =" + adSlotId +
+                        "，erroCode = " + erroCode + "，erroMsg = " + erroMsg);
+                preLoadNextAd(adSlotId);
+            }
+
+            @Override
+            public void onADComplete(String adSlotId) {
+                //播放成功，预加载下一个奖励视频
+                Log.d(DemoConstants.INIT, "onADComplete：" + adSlotId);
+                preLoadNextAd(adSlotId);
+            }
+
+            @Override
+            public void onADClick(String adSlotId) {
+                Log.d(DemoConstants.INIT, "onADClick：" + adSlotId);
+            }
+
+            @Override
+            public void onADClose(String adSlotId) {
+                Log.d(DemoConstants.INIT, "onADClose：" + adSlotId);
+            }
+        });
+    }
+
+    private void preLoadNextAd(String adSlotId) {
+        KsyunAdSdk.getInstance().preloadAd(adSlotId, new IKsyunAdPreloadListener() {
+            @Override
+            public void onAdInfoSuccess() {
+                Log.d(DemoConstants.INIT, "onAdInfoSuccess");
+            }
+
+            @Override
+            public void onAdInfoFailed(int erroCode, String erroMsg) {
+                Log.d(DemoConstants.INIT, "onAdInfoFailed：erroCode = " + erroCode + "，erroMsg" + erroMsg);
+            }
+
+            @Override
+            public void onAdLoaded(String adSlotId) {
+                Log.d(DemoConstants.INIT, "onAdLoaded：" + adSlotId);
+            }
+        });
     }
 
 }
