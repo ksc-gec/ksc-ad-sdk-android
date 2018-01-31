@@ -47,9 +47,9 @@
 
         <service android:name="com.ksc.ad.sdk.service.AdProxyService" />
         
-        <!--jar end-->
+        
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="com.ksc.ad.sdk.util.KsyunFileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -57,6 +57,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+
+        <!--jar end-->
 
     </application>
 
