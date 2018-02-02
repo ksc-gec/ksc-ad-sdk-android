@@ -34,8 +34,8 @@
         <activity android:name=".ui.statis.EventLogActivity"/>
         <activity android:name=".ui.AdInfoActivity"/>
 
-        <provider
-            android:name="android.support.v4.content.FileProvider"
+       <provider
+            android:name="com.ksc.ad.sdk.util.KsyunFileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
@@ -43,6 +43,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
+        
     </application>
 
 </manifest>
