@@ -33,7 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdListAdapter.AdInfoClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdListAdapter
+        .AdInfoClickListener {
 
     //应用Id
     public static final String APP_ID = "a4d2ff0b";
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initSdk() {
         KsyunAdSdkConfig config = new KsyunAdSdkConfig();
 
-        int env = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_ENV, KsyunAdSdkConfig.TEST_ENV);
+        int env = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_ENV, KsyunAdSdkConfig.RELEASE_ENV);
         boolean isShow = PreferencesUtil.getBoolean(this, DemoConstants.KEY_SDK_SHOW_CLOSE, true);
         int second = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_SHOW_TIME, 5);
         String appId = PreferencesUtil.getString(this, DemoConstants.KEY_APP_ID, APP_ID);

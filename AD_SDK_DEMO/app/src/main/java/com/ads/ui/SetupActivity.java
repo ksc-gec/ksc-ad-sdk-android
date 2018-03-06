@@ -30,7 +30,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
 
     private ActionBarUtils mActionBarUtils;
     private TextView mClearCacheTv;
-    private String[] envArray = {"1:测试环境", "2:线上环境"};
+    private String[] envArray = {"1:沙盒环境", "2:线上环境"};
     private ArrayAdapter<String> mArrayAdapter;
     private Spinner mEnvSpinner;
     private Switch mIsShowSwitch;
@@ -60,7 +60,13 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initData() {
-        mEnvSpinner.setSelection(PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_ENV,0));
+        int temp = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_ENV, 0);
+        if (temp == KsyunAdSdkConfig.RELEASE_ENV) {
+            temp = 1;
+        } else {
+            temp = 0;
+        }
+        mEnvSpinner.setSelection(temp);
         mIsShowSwitch.setChecked(PreferencesUtil.getBoolean(this, DemoConstants.KEY_SDK_SHOW_CLOSE, true));
         mShowTimeEt.setHint(String.valueOf(PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_SHOW_TIME, 5)));
         mAppIdEt.setHint(String.valueOf(PreferencesUtil.getString(this, DemoConstants.KEY_APP_ID,
@@ -75,9 +81,9 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         int id = v.getId();
         if (id == mActionBarUtils.getRightTv().getId()) {
-            if(mEnvSpinner.getSelectedItemPosition() ==0){
-                PreferencesUtil.putInt(this, DemoConstants.KEY_SDK_ENV, KsyunAdSdkConfig.TEST_ENV);
-            }else{
+            if (mEnvSpinner.getSelectedItemPosition() == 0) {
+                PreferencesUtil.putInt(this, DemoConstants.KEY_SDK_ENV, KsyunAdSdkConfig.SANDBOX_ENV);
+            } else {
                 PreferencesUtil.putInt(this, DemoConstants.KEY_SDK_ENV, KsyunAdSdkConfig.RELEASE_ENV);
             }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.ads">
+<manifest package="com.ads"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -34,7 +34,7 @@
         <activity android:name=".ui.statis.EventLogActivity"/>
         <activity android:name=".ui.AdInfoActivity"/>
 
-       <provider
+        <provider
             android:name="com.ksc.ad.sdk.util.KsyunFileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
@@ -43,7 +43,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"/>
         </provider>
-        
+
     </application>
 
 </manifest>
