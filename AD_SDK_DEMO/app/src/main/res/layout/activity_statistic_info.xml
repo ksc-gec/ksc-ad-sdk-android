@@ -29,7 +29,7 @@
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/ac_statistic_device_info_iv"
             android:gravity="center"
-            android:text="设备信息"
+            android:text="Equipment information"
             android:textColor="@color/color_000000"
             android:textSize="18dp"/>
 
@@ -67,7 +67,7 @@
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/ac_statistic_event_note_iv"
             android:gravity="center"
-            android:text="行为日志"
+            android:text="Behavior log"
             android:textColor="@color/color_000000"
             android:textSize="18dp"/>
 

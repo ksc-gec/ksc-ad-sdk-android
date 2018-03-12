@@ -27,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="设置AppId"
+                    android:text="Set up AppId"
                     android:textColor="@color/color_000000"
                     android:textSize="18dp"/>
 
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="设置环境"
+                    android:text="Set up Environment; "
                     android:textColor="@color/color_000000"
                     android:textSize="18dp"/>
 
@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="奖励视频是否显示关闭按钮"
+                    android:text="shows the close button or not"
                     android:textColor="@color/color_000000"
                     android:textSize="18dp"/>
 
@@ -91,10 +91,10 @@
                 android:padding="20dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="关闭按钮展示时机(秒)"
+                    android:text="Closing button display timing (seconds)"
                     android:textColor="@color/color_000000"
                     android:textSize="18dp"/>
 
@@ -121,7 +121,7 @@
             android:layout_margin="20dp"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="清空缓存"
+            android:text="clean up cache"
             android:textColor="@color/color_FFFFFF"
             android:textSize="18dp"/>
 

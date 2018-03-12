@@ -36,7 +36,7 @@ public class DeviceInfoActivity extends AppCompatActivity {
 
     private void initView() {
         mActionBarUtils = new ActionBarUtils(this);
-        mActionBarUtils.setBaseActionBar("设备信息");
+        mActionBarUtils.setBaseActionBar("Equipment information");
         mDeviceInfoTv = findViewById(R.id.device_info_data_tv);
     }
 
@@ -58,7 +58,7 @@ public class DeviceInfoActivity extends AppCompatActivity {
                 String temp = builder.toString().replace(",", ",\n");
                 mDeviceInfoTv.setText(temp);
             } else {
-                mDeviceInfoTv.setText("设备信息为空");
+                mDeviceInfoTv.setText("Equipment information is empty");
             }
         }
 

@@ -46,7 +46,7 @@ public class ActionBarUtils {
     }
 
     public void setMainAcActionBarView(View.OnClickListener onClickListener) {
-        mTitleTv.setText(mActivity.getString(R.string.app_name));
+        mTitleTv.setText(mActivity.getString(R.string.app_name_ksy));
         mLeftTv.setBackgroundResource(R.mipmap.ksc_icon_setting);
         mRightTv.setBackgroundResource(R.mipmap.ksc_icon_info);
         mLeftTv.setOnClickListener(onClickListener);

@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(getApplicationContext(), StatisticInfoActivity.class);
                 startActivity(intent);
             } else {
-                showToast("请先初始化SDK");
+                showToast("Please initialize the SDK first");
             }
         } else if (id == mInitTv.getId()) {
             initSdk();
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (isInitSuccess) {
                 preLoadAd();
             } else {
-                showToast("请先初始化SDK");
+                showToast("Please initialize the SDK first");
             }
         }
     }
@@ -128,12 +128,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 IKsyunAdInitResultListener() {
                     @Override
                     public void onSuccess(final Map<String, String> map) {
-                        setInitStatus("初始化成功");
+                        setInitStatus("Initialization success");
                         isInitSuccess = true;
                         String result = map.get(KsyunSdkConstants.KEY_INIT_RESULT_AD_SLOTS);
                         Log.d(DemoConstants.INIT, "id list " + result);
                         if (!TextUtils.isEmpty(result)) {
-                            showToast("广告位获取成功");
+                            showToast("Success in advertising");
                             handleAdListJson(result);
                             mAdListAdapter.notifyDataSetChanged();
                         }
@@ -141,8 +141,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void onFailure(final int errCode, final String errMsg) {
-                        showToast("初始化失败，errCode：" + errCode + "，errMsg：" + errMsg);
-                        setInitStatus("初始化失败：" + errCode + "\n" + errMsg);
+                        showToast("initialization failed，errCode：" + errCode + "，errMsg：" + errMsg);
+                        setInitStatus("initialization failed：" + errCode + "\n" + errMsg);
                         isInitSuccess = false;
                     }
                 });
@@ -191,13 +191,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onAdInfoSuccess() {
                 Log.d(DemoConstants.INIT, "onAdInfoSuccess: ");
-                setPreLoadStatus("加载广告信息成功");
+                setPreLoadStatus("Loading ad information success");
             }
 
             @Override
             public void onAdInfoFailed(final int errCode, final String errMsg) {
                 Log.d(DemoConstants.INIT, "onAdInfoFailed: " + errCode + "," + errMsg);
-                setPreLoadStatus("预加载失败:" + errCode + "\n" + errMsg);
+                setPreLoadStatus("load failure:" + errCode + "\n" + errMsg);
             }
 
             @Override

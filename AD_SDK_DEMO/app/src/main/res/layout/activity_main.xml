@@ -40,7 +40,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/colorPrimary"
                     android:gravity="center"
-                    android:text="初始化SDK"
+                    android:text="init SDK"
                     android:textColor="@color/color_FFFFFF"
                     android:textSize="16dp"/>
 
@@ -72,7 +72,7 @@
                     android:layout_centerHorizontal="true"
                     android:background="@color/colorPrimary"
                     android:gravity="center"
-                    android:text="预加载"
+                    android:text="load ad"
                     android:textColor="@color/color_FFFFFF"
                     android:textSize="16dp"/>
 

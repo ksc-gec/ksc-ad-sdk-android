@@ -33,7 +33,7 @@ public class StatisticInfoActivity extends AppCompatActivity implements View.OnC
 
     private void initView() {
         mActionBarUtils = new ActionBarUtils(this);
-        mActionBarUtils.setBaseActionBar("统计信息");
+        mActionBarUtils.setBaseActionBar("statistical information");
         mDeviceInfoRl = findViewById(R.id.ac_statistic_device_info_rl);
         mEventNoteRl = findViewById(R.id.ac_statistic_event_note_rl);
         mDeviceInfoRl.setOnClickListener(this);

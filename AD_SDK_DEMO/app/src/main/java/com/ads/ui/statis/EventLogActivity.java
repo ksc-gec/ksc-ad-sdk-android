@@ -38,7 +38,7 @@ public class EventLogActivity extends AppCompatActivity {
 
     private void initView() {
         mActionBarUtils = new ActionBarUtils(this);
-        mActionBarUtils.setBaseActionBar("行为日志");
+        mActionBarUtils.setBaseActionBar("Behavior log");
         mEventLogInfoTv = findViewById(R.id.event_log_data_tv);
     }
 
@@ -61,7 +61,7 @@ public class EventLogActivity extends AppCompatActivity {
                 }
                 mEventLogInfoTv.setText(builder);
             } else {
-                mEventLogInfoTv.setText("行为日志为空");
+                mEventLogInfoTv.setText("Behavior log is empty");
             }
         }
 

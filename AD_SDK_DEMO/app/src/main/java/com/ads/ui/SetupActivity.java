@@ -30,7 +30,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
 
     private ActionBarUtils mActionBarUtils;
     private TextView mClearCacheTv;
-    private String[] envArray = {"1:沙盒环境", "2:线上环境"};
+    private String[] envArray = {"1:Sandbox Env", "2:Release Env"};
     private ArrayAdapter<String> mArrayAdapter;
     private Spinner mEnvSpinner;
     private Switch mIsShowSwitch;
@@ -47,7 +47,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
 
     private void initView() {
         mActionBarUtils = new ActionBarUtils(this);
-        mActionBarUtils.setSetupActionBar("设置", "保存", this);
+        mActionBarUtils.setSetupActionBar("SET", "SAVE", this);
         mClearCacheTv = findViewById(R.id.ac_setup_clear_cache_tv);
         mClearCacheTv.setOnClickListener(this);
         mEnvSpinner = findViewById(R.id.setup_env_spn);
@@ -98,11 +98,11 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
                 PreferencesUtil.putString(this, DemoConstants.KEY_APP_ID, appId);
             }
 
-            showToast("配置保存成功");
+            showToast("Configuration save success");
             finish();
         } else if (id == mClearCacheTv.getId()) {
             KsyunAdSdk.getInstance().clearCache();
-            showToast("清理操作已执行");
+            showToast("The cleanup operation has been executed");
         }
     }
 }

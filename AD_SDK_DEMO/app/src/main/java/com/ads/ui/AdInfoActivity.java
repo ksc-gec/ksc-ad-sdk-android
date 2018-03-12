@@ -51,12 +51,12 @@ public class AdInfoActivity extends AppCompatActivity implements View.OnClickLis
 
         if (null != mAdInfo) {
             hasAd(mAdInfo.adslot_id);
-            mAdIdTv.setText(String.valueOf("广告位ID：" + mAdInfo.adslot_id));
-            mAdNameTv.setText(String.valueOf("广告位名称：" + mAdInfo.adslot_name));
-            mAdTypeTv.setText(String.valueOf("广告位类型：" + mAdInfo.adslot_type));
-            mAdStatusTv.setText(String.valueOf("广告位状态：" + mAdInfo.adslot_status));
+            mAdIdTv.setText(String.valueOf("AD ID：" + mAdInfo.adslot_id));
+            mAdNameTv.setText(String.valueOf("AD NAME：" + mAdInfo.adslot_name));
+            mAdTypeTv.setText(String.valueOf("AD TYPE：" + mAdInfo.adslot_type));
+            mAdStatusTv.setText(String.valueOf("AD STATUS：" + mAdInfo.adslot_status));
         } else {
-            showToast("广告信息为空");
+            showToast("AD info is empty");
         }
 
     }
@@ -67,7 +67,7 @@ public class AdInfoActivity extends AppCompatActivity implements View.OnClickLis
 
     private void initView() {
         mActionBarUtils = new ActionBarUtils(this);
-        mActionBarUtils.setBaseActionBar("广告信息");
+        mActionBarUtils.setBaseActionBar("AD INFO");
         mAdIdTv = findViewById(R.id.item_ad_list_id_tv);
         mAdNameTv = findViewById(R.id.item_ad_list_name_tv);
         mAdTypeTv = findViewById(R.id.item_ad_list_type_tv);
@@ -86,7 +86,7 @@ public class AdInfoActivity extends AppCompatActivity implements View.OnClickLis
                 finish();
                 playAdVideo(mAdInfo.adslot_id);
             } else {
-                showToast("没有广告");
+                showToast("have no ad");
             }
         }
     }
@@ -121,7 +121,7 @@ public class AdInfoActivity extends AppCompatActivity implements View.OnClickLis
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    showToast("本地没有已缓存广告");
+                    showToast("No cached ads in local");
                     preLoadNextAd(adslot_id);
                 }
             });
