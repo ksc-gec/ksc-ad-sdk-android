@@ -14,7 +14,7 @@ import com.ads.adlist.AdInfo;
 import com.ads.utils.ActionBarUtils;
 import com.ads.utils.DemoConstants;
 import com.ksc.ad.sdk.IKsyunAdListener;
-import com.ksc.ad.sdk.IKsyunAdPreloadListener;
+import com.ksc.ad.sdk.IKsyunAdLoadListener;
 import com.ksc.ad.sdk.KsyunAdSdk;
 
 /**
@@ -107,7 +107,7 @@ public class AdInfoActivity extends AppCompatActivity implements View.OnClickLis
         //                        }
         //                    });
         //                }
-        if (KsyunAdSdk.getInstance().hasLocalAd(adslot_id)) {
+        if (KsyunAdSdk.getInstance().hasAd(adslot_id)) {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -172,7 +172,7 @@ public class AdInfoActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void preLoadNextAd(String adSlotId) {
-        KsyunAdSdk.getInstance().preloadAd(adSlotId, new IKsyunAdPreloadListener() {
+        KsyunAdSdk.getInstance().loadAd(adSlotId, new IKsyunAdLoadListener() {
             @Override
             public void onAdInfoSuccess() {
                 Log.d(DemoConstants.INIT, "onAdInfoSuccess");

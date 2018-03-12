@@ -20,7 +20,7 @@ import com.ads.utils.ActionBarUtils;
 import com.ads.utils.DemoConstants;
 import com.ads.utils.PreferencesUtil;
 import com.ksc.ad.sdk.IKsyunAdInitResultListener;
-import com.ksc.ad.sdk.IKsyunAdPreloadListener;
+import com.ksc.ad.sdk.IKsyunAdLoadListener;
 import com.ksc.ad.sdk.KsyunAdSdk;
 import com.ksc.ad.sdk.KsyunAdSdkConfig;
 import com.ksc.ad.sdk.util.KsyunSdkConstants;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         .AdInfoClickListener {
 
     //应用Id
-    public static final String APP_ID = "a4d2ff0b";
+    public static final String APP_ID = "51c54108";
     private ActionBarUtils mActionBarUtils;
     private TextView mAppIdTv;
     private TextView mInitTv;
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 预加载
      */
     private void preLoadAd() {
-        KsyunAdSdk.getInstance().preloadAd(new IKsyunAdPreloadListener() {
+        KsyunAdSdk.getInstance().loadAd(new IKsyunAdLoadListener() {
             @Override
             public void onAdInfoSuccess() {
                 Log.d(DemoConstants.INIT, "onAdInfoSuccess: ");
