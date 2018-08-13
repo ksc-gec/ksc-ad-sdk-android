@@ -99,6 +99,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 showToast("Please initialize the SDK first");
             }
         } else if (id == mInitTv.getId()) {
+            mInitTv.setClickable(false);
+            mInitTv.setAlpha(0.4f);
+            setInitStatus("initializing...,please wait a moment");
             initSdk();
         } else if (id == mPreLoadTv.getId()) {
             if (isInitSuccess) {
