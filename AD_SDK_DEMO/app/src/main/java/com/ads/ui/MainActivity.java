@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         .AdInfoClickListener {
 
     //应用Id
-    public static final String APP_ID = "51c54108";
+    public static final String APP_ID = "8b6e18b3";
     private ActionBarUtils mActionBarUtils;
     private TextView mAppIdTv;
     private TextView mInitTv;
