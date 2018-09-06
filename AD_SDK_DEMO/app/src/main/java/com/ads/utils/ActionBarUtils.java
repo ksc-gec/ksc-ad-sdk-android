@@ -11,7 +11,7 @@ import com.ads.R;
  * Company: ksyun;<p/>
  * Author: HeHaoNan;<p/>
  * Date: 2017/12/28,下午5:06;<p/>
- * Package_Name: com.ksc.ad.demo.utils;<p/>
+ * Package_Name: com.ads.utils;<p/>
  * Description: ;<p/>
  * Other: ;
  */
@@ -46,7 +46,7 @@ public class ActionBarUtils {
     }
 
     public void setMainAcActionBarView(View.OnClickListener onClickListener) {
-        mTitleTv.setText(mActivity.getString(R.string.app_name_ksy));
+        mTitleTv.setText(mActivity.getString(R.string.app_name));
         mLeftTv.setBackgroundResource(R.mipmap.ksc_icon_setting);
         mRightTv.setBackgroundResource(R.mipmap.ksc_icon_info);
         mLeftTv.setOnClickListener(onClickListener);
@@ -62,6 +62,12 @@ public class ActionBarUtils {
                 mActivity.finish();
             }
         });
+    }
+
+    public  void setBaseActionBarForAdInfo(String title, View.OnClickListener listener){
+        mTitleTv.setText(title);
+        mLeftTv.setBackgroundResource(R.mipmap.ksc_icon_back);
+        mLeftTv.setOnClickListener(listener);
     }
 
     public void setSetupActionBar(String title, String rightTxt, View.OnClickListener onClickListener) {

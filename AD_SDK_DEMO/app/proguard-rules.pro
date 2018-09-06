@@ -25,4 +25,3 @@
 #
 #-dontwarn com.ksc.ad.sdk.R$id
 #-dontwarn com.ksc.ad.sdk.R
--keep

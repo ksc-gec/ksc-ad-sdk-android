@@ -23,6 +23,7 @@ public class StatisticInfoActivity extends AppCompatActivity implements View.OnC
     private ActionBarUtils mActionBarUtils;
     private RelativeLayout mDeviceInfoRl;
     private RelativeLayout mEventNoteRl;
+    private RelativeLayout mAutoNoteRl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +37,10 @@ public class StatisticInfoActivity extends AppCompatActivity implements View.OnC
         mActionBarUtils.setBaseActionBar("statistical information");
         mDeviceInfoRl = findViewById(R.id.ac_statistic_device_info_rl);
         mEventNoteRl = findViewById(R.id.ac_statistic_event_note_rl);
+        mAutoNoteRl = findViewById(R.id.ac_statistic_auto_note_rl);
         mDeviceInfoRl.setOnClickListener(this);
         mEventNoteRl.setOnClickListener(this);
+        mAutoNoteRl.setOnClickListener(this);
     }
 
     private void showToast(String msg) {
@@ -54,6 +57,9 @@ public class StatisticInfoActivity extends AppCompatActivity implements View.OnC
             startActivity(intent);
         } else if (id == mEventNoteRl.getId()) {
             Intent intent = new Intent(getApplicationContext(), EventLogActivity.class);
+            startActivity(intent);
+        } else if (id == mAutoNoteRl.getId()) {
+            Intent intent = new Intent(getApplicationContext(), AtuoCacheActivity.class);
             startActivity(intent);
         }
     }

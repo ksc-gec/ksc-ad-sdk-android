@@ -29,7 +29,7 @@
                     android:layout_centerVertical="true"
                     android:text="Set up AppId"
                     android:textColor="@color/color_000000"
-                    android:textSize="18dp"/>
+                    android:textSize="16dp"/>
 
                 <EditText
                     android:id="@+id/setup_app_id_et"
@@ -52,9 +52,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="Set up Environment; "
+                    android:text="Set up Environment"
                     android:textColor="@color/color_000000"
-                    android:textSize="18dp"/>
+                    android:textSize="16dp"/>
 
                 <Spinner
                     android:id="@+id/setup_env_spn"
@@ -73,9 +73,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="shows the close button or not"
+                    android:text="Shows the close button or not"
                     android:textColor="@color/color_000000"
-                    android:textSize="18dp"/>
+                    android:textSize="16dp"/>
 
                 <Switch
                     android:id="@+id/setup_close_swh"
@@ -91,12 +91,12 @@
                 android:padding="20dp">
 
                 <TextView
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="Closing button display timing (seconds)"
                     android:textColor="@color/color_000000"
-                    android:textSize="18dp"/>
+                    android:textSize="16dp"/>
 
                 <EditText
                     android:id="@+id/setup_show_second_et"
@@ -108,6 +108,26 @@
                     android:inputType="number"
                     android:textColorHint="@color/color_888888"/>
 
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Download under mobile data or not"
+                    android:textColor="@color/color_000000"
+                    android:textSize="16dp"/>
+
+                <Switch
+                    android:id="@+id/setup_load_4g"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"/>
 
             </RelativeLayout>
 
@@ -121,7 +141,7 @@
             android:layout_margin="20dp"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="clean up cache"
+            android:text="清空缓存"
             android:textColor="@color/color_FFFFFF"
             android:textSize="18dp"/>
 

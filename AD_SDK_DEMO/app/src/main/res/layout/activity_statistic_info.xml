@@ -82,5 +82,40 @@
     </RelativeLayout>
 
     <include layout="@layout/base_divide_line"/>
+    <RelativeLayout
+        android:id="@+id/ac_statistic_auto_note_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
 
+        <ImageView
+            android:id="@+id/ac_statistic_auto_note_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ksc_icon_event_log"/>
+
+        <TextView
+            android:id="@+id/ac_statistic_auto_note_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/ac_statistic_auto_note_iv"
+            android:gravity="center"
+            android:text="Cache log"
+            android:textColor="@color/color_000000"
+            android:textSize="18dp"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ksc_icon_jump"/>
+
+
+    </RelativeLayout>
+    <include layout="@layout/base_divide_line"/>
 </LinearLayout>

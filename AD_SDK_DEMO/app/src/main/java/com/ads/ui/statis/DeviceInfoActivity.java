@@ -16,7 +16,7 @@ import java.util.List;
  * Company: ksyun;<p/>
  * Author: HeHaoNan;<p/>
  * Date: 2018/1/2,下午4:19;<p/>
- * Package_Name: com.ksc.ad.demo.ui;<p/>
+ * Package_Name: com.ads.ui;<p/>
  * Description: ;<p/>
  * Other: ;
  */
@@ -36,7 +36,7 @@ public class DeviceInfoActivity extends AppCompatActivity {
 
     private void initView() {
         mActionBarUtils = new ActionBarUtils(this);
-        mActionBarUtils.setBaseActionBar("Equipment information");
+        mActionBarUtils.setBaseActionBar("设备信息");
         mDeviceInfoTv = findViewById(R.id.device_info_data_tv);
     }
 
@@ -58,7 +58,7 @@ public class DeviceInfoActivity extends AppCompatActivity {
                 String temp = builder.toString().replace(",", ",\n");
                 mDeviceInfoTv.setText(temp);
             } else {
-                mDeviceInfoTv.setText("Equipment information is empty");
+                mDeviceInfoTv.setText("设备信息为空");
             }
         }
 

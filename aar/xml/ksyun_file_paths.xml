@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
-    <external-path path="Android/data/com.ads/"        name="files_root" />
-    <external-path path="cache/apk/." name="external_storage_root" />
+    <external-cache-path
+        name="files_root"
+        path="apk/."/>
 </paths>

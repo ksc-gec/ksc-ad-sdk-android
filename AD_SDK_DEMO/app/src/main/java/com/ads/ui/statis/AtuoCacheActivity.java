@@ -22,15 +22,15 @@ import java.util.List;
  * Description: ;<p/>
  * Other: ;
  */
-public class EventLogActivity extends AppCompatActivity {
+public class AtuoCacheActivity extends AppCompatActivity {
 
     private ActionBarUtils mActionBarUtils;
-    private TextView mEventLogInfoTv;
+    private TextView mAutoCacheLogTv;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_log);
+        setContentView(R.layout.activity_auto_cache_log);
         initView();
         MyAsyncTask task = new MyAsyncTask();
         task.execute();
@@ -38,8 +38,8 @@ public class EventLogActivity extends AppCompatActivity {
 
     private void initView() {
         mActionBarUtils = new ActionBarUtils(this);
-        mActionBarUtils.setBaseActionBar("行为日志");
-        mEventLogInfoTv = findViewById(R.id.event_log_data_tv);
+        mActionBarUtils.setBaseActionBar("自缓存广告日志");
+        mAutoCacheLogTv = findViewById(R.id.auto_cache_log_data_tv);
     }
 
     private class MyAsyncTask extends AsyncTask<String, Integer, List<String>> {
@@ -59,15 +59,15 @@ public class EventLogActivity extends AppCompatActivity {
                         builder.append(str).append("\r\n");
                     }
                 }
-                mEventLogInfoTv.setText(builder);
+                mAutoCacheLogTv.setText(builder);
             } else {
-                mEventLogInfoTv.setText("行为日志为空");
+                mAutoCacheLogTv.setText("日志为空");
             }
         }
 
         @Override
         protected List<String> doInBackground(String... strings) {
-            List<String> data = KsyunFileUtils.getStatisInfoData(getApplicationContext());
+            List<String> data = KsyunFileUtils.getAutoCacheInfo(getApplicationContext());
             if (null != data && !data.isEmpty()) {
                 Collections.reverse(data);
             }

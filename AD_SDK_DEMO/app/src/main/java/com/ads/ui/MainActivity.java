@@ -36,8 +36,6 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdListAdapter
         .AdInfoClickListener {
 
-    //应用Id
-    public static final String APP_ID = "8b6e18b3";
     private ActionBarUtils mActionBarUtils;
     private TextView mAppIdTv;
     private TextView mInitTv;
@@ -47,7 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView mAdListRlv;
     private AdListAdapter mAdListAdapter;
     private List<AdInfo> mAdInfoList = new ArrayList<>();
+    //    public static final String APP_ID = "01076d2d";
+    //    public static final String APP_ID = "01076d2e";
+    //        public static final String AD_SLOT_ID = "11684011";
     private boolean isInitSuccess;
+    private long mLastClickTime;
+    public static final int CLICK_INTERVAL_TIME = 2 * 1000;//ms
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mPreLoadTv.setOnClickListener(this);
         mAdListRlv = findViewById(R.id.main_ad_list_rlv);
         mAdListRlv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        mAdListAdapter = new AdListAdapter(mAdInfoList);
+        mAdListAdapter = new AdListAdapter(this, mAdInfoList);
         mAdListAdapter.setClickListener(this);
         mAdListRlv.setAdapter(mAdListAdapter);
     }
@@ -78,11 +81,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
         mAppIdTv.setText(String.valueOf("AppId：" + PreferencesUtil.getString(this, DemoConstants
-                .KEY_APP_ID, APP_ID)));
+                .KEY_APP_ID, DemoConstants.VALUE_APP_ID)));
     }
 
-    private void showToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    private void showToast(final String msg) {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(getApplicationContext(), StatisticInfoActivity.class);
                 startActivity(intent);
             } else {
-                showToast("Please initialize the SDK first");
+                showToast("请先初始化SDK");
             }
         } else if (id == mInitTv.getId()) {
             mInitTv.setClickable(false);
@@ -107,36 +110,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (isInitSuccess) {
                 preLoadAd();
             } else {
-                showToast("Please initialize the SDK first");
+                showToast("请先初始化SDK");
             }
         }
     }
 
-    /**
-     * 初始化sdk
-     */
     private void initSdk() {
         KsyunAdSdkConfig config = new KsyunAdSdkConfig();
 
-        int env = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_ENV, KsyunAdSdkConfig.SANDBOX_ENV);
-        boolean isShow = PreferencesUtil.getBoolean(this, DemoConstants.KEY_SDK_SHOW_CLOSE, true);
-        int second = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_SHOW_TIME, 5);
-        String appId = PreferencesUtil.getString(this, DemoConstants.KEY_APP_ID, APP_ID);
+        int env = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_ENV,
+                DemoConstants.VALUE_SDK_ENV);
+        boolean isShow = PreferencesUtil.getBoolean(this, DemoConstants.KEY_SDK_SHOW_CLOSE,
+                DemoConstants.VALUE_SDK_SHOW_CLOSE);
+        int second = PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_SHOW_CLOSE_TIME,
+                DemoConstants.VALUE_SDK_SHOW_TIME);
+        String appId = PreferencesUtil.getString(this, DemoConstants.KEY_APP_ID,
+                DemoConstants.VALUE_APP_ID);
+        boolean closMobileLoad = PreferencesUtil.getBoolean(this, DemoConstants.KEY_SDK_CLOSE_MOBILE_LOAD,
+                DemoConstants.VALUE_SDK_CLOSE_MOBILE_LOAD);
 
         config.setSdkEnvironment(env);
         config.setShowCloseBtnOfRewardVideo(isShow);
         config.setCloseBtnComingTimeOfRewardVideo(second);
-        config.setSingleConfig("testKey", "testValue");
+        config.setKeyCloseSdkMobileNetworkLoad(closMobileLoad);
         KsyunAdSdk.getInstance().init(MainActivity.this, appId, "channelId", config, new
                 IKsyunAdInitResultListener() {
                     @Override
                     public void onSuccess(final Map<String, String> map) {
-                        setInitStatus("Initialization success");
+                        setInitStatus("初始化成功");
                         isInitSuccess = true;
                         String result = map.get(KsyunSdkConstants.KEY_INIT_RESULT_AD_SLOTS);
                         Log.d(DemoConstants.INIT, "id list " + result);
                         if (!TextUtils.isEmpty(result)) {
-                            showToast("Success in advertising");
+                            showToast("广告位获取成功");
                             handleAdListJson(result);
                             mAdListAdapter.notifyDataSetChanged();
                         }
@@ -144,21 +150,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void onFailure(final int errCode, final String errMsg) {
-                        showToast("initialization failed，errCode：" + errCode + "，errMsg：" + errMsg);
-                        setInitStatus("initialization failed：" + errCode + "\n" + errMsg);
-                        isInitSuccess = false;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                showToast("初始化失败，errCode：" + errCode + "，errMsg：" + errMsg);
+                                setInitStatus("初始化失败：" + errCode + "\n" + errMsg);
+                                isInitSuccess = false;
+                            }
+                        });
                     }
                 });
-    }
-
-    private void setInitStatus(String msg) {
-        mInitStatusTv.setVisibility(View.VISIBLE);
-        mInitStatusTv.setText(msg);
-    }
-
-    private void setPreLoadStatus(String msg) {
-        mPreLoadStatusTv.setVisibility(View.VISIBLE);
-        mPreLoadStatusTv.setText(msg);
     }
 
     private void handleAdListJson(String json) {
@@ -172,7 +173,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 adInfo.adslot_type = object.getString("adslot_type");
                 adInfo.adslot_status = object.getString("adslot_status");
                 mAdInfoList.add(adInfo);
-
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -182,30 +182,80 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onAdPlayClicked(int position, AdInfo adInfo) {
         Intent intent = new Intent(this, AdInfoActivity.class);
+        intent.setExtrasClassLoader(AdInfo.class.getClassLoader());
         intent.putExtra(DemoConstants.KEY_AD_INFO, adInfo);
         startActivity(intent);
     }
 
-    /**
-     * 预加载
-     */
+    @Override
+    public void onAdSlotSetAutoCache(int position, AdInfo adinfo) {
+        KsyunAdSdk.getInstance().setAutoCachedAdSlot(adinfo.adslot_id);
+    }
+
+    @Override
+    public void onLoadAd(int position, String adSlotId) {
+        if (checkQuickly()) {
+            Toast.makeText(this, "已请求,别狂点了", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        KsyunAdSdk.getInstance().loadAd(adSlotId, new IKsyunAdLoadListener() {
+            @Override
+            public void onAdInfoSuccess() {
+                Log.d(DemoConstants.LoadSingleAd, "onAdInfoSuccess: ");
+            }
+
+            @Override
+            public void onAdInfoFailed(int i, String s) {
+                Log.d(DemoConstants.LoadSingleAd, "onAdInfoFailed: ");
+            }
+
+            @Override
+            public void onAdLoaded(String s) {
+                Log.d(DemoConstants.LoadSingleAd, "onAdLoaded: ");
+            }
+        });
+    }
+
+    private boolean checkQuickly() {
+        long currentTimeMillis = System.currentTimeMillis();
+        if (currentTimeMillis - mLastClickTime > CLICK_INTERVAL_TIME) {
+            mLastClickTime = currentTimeMillis;
+            return false;
+        }
+        mLastClickTime = currentTimeMillis;
+        return true;
+    }
+
+    private void setInitStatus(String msg) {
+        mInitStatusTv.setVisibility(View.VISIBLE);
+        mInitStatusTv.setText(msg);
+    }
+
+    private void setPreLoadStatus(String msg) {
+        mPreLoadStatusTv.setVisibility(View.VISIBLE);
+        mPreLoadStatusTv.setText(msg);
+    }
+
     private void preLoadAd() {
+
         KsyunAdSdk.getInstance().loadAd(new IKsyunAdLoadListener() {
             @Override
             public void onAdInfoSuccess() {
                 Log.d(DemoConstants.INIT, "onAdInfoSuccess: ");
-                setPreLoadStatus("Loading ad information success");
+                setPreLoadStatus("加载广告信息成功");
+
             }
 
             @Override
             public void onAdInfoFailed(final int errCode, final String errMsg) {
                 Log.d(DemoConstants.INIT, "onAdInfoFailed: " + errCode + "," + errMsg);
-                setPreLoadStatus("load failure:" + errCode + "\n" + errMsg);
+                setPreLoadStatus("预加载失败:" + errCode + "\n" + errMsg);
             }
 
             @Override
-            public void onAdLoaded(String adSlotId) {
+            public void onAdLoaded(final String adSlotId) {
                 Log.d(DemoConstants.INIT, "onAdLoaded: " + adSlotId);
+                Log.d("LOADED_SUCCESSE", "onAdLoaded: " + adSlotId);
                 for (AdInfo adInfo : mAdInfoList) {
                     if (adInfo.adslot_id.equals(adSlotId)) {
                         adInfo.isHasAd = true;
@@ -214,8 +264,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mAdListAdapter.notifyDataSetChanged();
             }
         });
-
-
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -227,5 +275,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onKeyDown(keyCode, event);
     }
 
+    private void other() {
+        KsyunAdSdk.getInstance().showAd(MainActivity.this, "fakeAdSlotId");
+        //        KsyunPluginManager.getInstance(MainActivity.this).getPluginDrawable("timg");
+    }
 
 }

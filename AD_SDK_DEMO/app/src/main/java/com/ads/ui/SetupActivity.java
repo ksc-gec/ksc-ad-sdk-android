@@ -30,12 +30,14 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
 
     private ActionBarUtils mActionBarUtils;
     private TextView mClearCacheTv;
-    private String[] envArray = {"1:Sandbox Env", "2:Release Env"};
+
     private ArrayAdapter<String> mArrayAdapter;
+    private EditText mAppIdEt;
     private Spinner mEnvSpinner;
     private Switch mIsShowSwitch;
     private EditText mShowTimeEt;
-    private EditText mAppIdEt;
+    private Switch mMobileLoadSwitch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +50,15 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     private void initView() {
         mActionBarUtils = new ActionBarUtils(this);
         mActionBarUtils.setSetupActionBar("SET", "SAVE", this);
-        mClearCacheTv = findViewById(R.id.ac_setup_clear_cache_tv);
-        mClearCacheTv.setOnClickListener(this);
+        mAppIdEt = findViewById(R.id.setup_app_id_et);
         mEnvSpinner = findViewById(R.id.setup_env_spn);
         mIsShowSwitch = findViewById(R.id.setup_close_swh);
         mShowTimeEt = findViewById(R.id.setup_show_second_et);
-        mAppIdEt = findViewById(R.id.setup_app_id_et);
-        mArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, envArray);
+        mClearCacheTv = findViewById(R.id.ac_setup_clear_cache_tv);
+        mMobileLoadSwitch = findViewById(R.id.setup_load_4g);
+        mClearCacheTv.setOnClickListener(this);
+        mArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+                DemoConstants.envArray);
         mArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mEnvSpinner.setAdapter(mArrayAdapter);
     }
@@ -67,10 +71,17 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
             temp = 0;
         }
         mEnvSpinner.setSelection(temp);
-        mIsShowSwitch.setChecked(PreferencesUtil.getBoolean(this, DemoConstants.KEY_SDK_SHOW_CLOSE, true));
-        mShowTimeEt.setHint(String.valueOf(PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_SHOW_TIME, 5)));
+
         mAppIdEt.setHint(String.valueOf(PreferencesUtil.getString(this, DemoConstants.KEY_APP_ID,
-                MainActivity.APP_ID)));
+                DemoConstants.VALUE_APP_ID)));
+        mIsShowSwitch.setChecked(PreferencesUtil.getBoolean(this, DemoConstants.KEY_SDK_SHOW_CLOSE,
+                DemoConstants.VALUE_SDK_SHOW_CLOSE));
+        mShowTimeEt.setHint(String.valueOf(PreferencesUtil.getInt(this, DemoConstants.KEY_SDK_SHOW_CLOSE_TIME,
+                DemoConstants.VALUE_SDK_SHOW_TIME)));
+        mMobileLoadSwitch.setChecked(PreferencesUtil.getBoolean(this, DemoConstants
+                        .KEY_SDK_CLOSE_MOBILE_LOAD,
+                DemoConstants.VALUE_SDK_CLOSE_MOBILE_LOAD));
+
     }
 
     private void showToast(String msg) {
@@ -89,20 +100,25 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
 
             PreferencesUtil.putBoolean(this, DemoConstants.KEY_SDK_SHOW_CLOSE,
                     mIsShowSwitch.isChecked());
+
             if (!TextUtils.isEmpty(mShowTimeEt.getText())) {
                 int temp = Integer.valueOf(mShowTimeEt.getText().toString());
-                PreferencesUtil.putInt(this, DemoConstants.KEY_SDK_SHOW_TIME, temp);
+                PreferencesUtil.putInt(this, DemoConstants.KEY_SDK_SHOW_CLOSE_TIME, temp);
             }
+
             String appId = mAppIdEt.getText().toString();
             if (!TextUtils.isEmpty(appId)) {
                 PreferencesUtil.putString(this, DemoConstants.KEY_APP_ID, appId);
             }
 
-            showToast("Configuration save success");
+            PreferencesUtil.putBoolean(this, DemoConstants.KEY_SDK_CLOSE_MOBILE_LOAD,
+                    mMobileLoadSwitch.isChecked());
+
+            showToast("配置保存成功");
             finish();
         } else if (id == mClearCacheTv.getId()) {
             KsyunAdSdk.getInstance().clearCache();
-            showToast("The cleanup operation has been executed");
+            showToast("清理操作已执行");
         }
     }
 }

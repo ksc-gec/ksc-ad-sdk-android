@@ -9,4 +9,19 @@
 
     <include layout="@layout/item_ad_list"/>
 
+    <TextView
+        android:id="@+id/item_ad_list_show_interstitial_tv"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_back_selector"
+        android:gravity="center"
+        android:text="弹屏广告"
+        android:textColor="@color/color_FFFFFF"
+        android:visibility="visible"/>
+
+    <include layout="@layout/base_divide_line"/>
+
 </LinearLayout>

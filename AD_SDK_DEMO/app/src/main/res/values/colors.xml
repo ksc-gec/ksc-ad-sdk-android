@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#448aff</color>
+    <color name="colorPrimary_66">#66448aff</color>
     <color name="colorPrimaryDark">#2072fb</color>
     <color name="colorAccent">#448aff</color>
     <color name="color_000000">#000000</color>
     <color name="color_FFFFFF">#FFFFFF</color>
     <color name="color_222222">#222222</color>
     <color name="color_888888">#888888</color>
+
+    <color name="ksyun_color_black_30">#20000000</color>
+
+    <color name="color_FF7900">#20FF7900</color>
+
+    <color name="color_6CF862">#206CF862</color>
+
 </resources>

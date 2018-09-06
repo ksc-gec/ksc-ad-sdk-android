@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Company: ksyun;<p/>
  * Author: HeHaoNan;<p/>
  * Date: 2017/12/27,下午7:20;<p/>
- * Package_Name: com.ksc.ad.demo.adlist;<p/>
+ * Package_Name: com.ads.adlist;<p/>
  * Description: ;<p/>
  * Other: ;
  */
@@ -44,7 +44,7 @@ public class AdInfo implements Parcelable {
         this.isHasAd = in.readByte() != 0;
     }
 
-    public static final Creator<AdInfo> CREATOR = new Creator<AdInfo>() {
+    public static final Parcelable.Creator<AdInfo> CREATOR = new Parcelable.Creator<AdInfo>() {
         @Override
         public AdInfo createFromParcel(Parcel source) {
             return new AdInfo(source);
