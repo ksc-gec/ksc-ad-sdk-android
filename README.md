@@ -1,6 +1,6 @@
 # ksc-ad-sdk-android
 ## 简介
- 金山云移动广告SDK
+ **金山云移动广告SDK**
 ## 接入方式
   请参照接入文档：
 
@@ -11,10 +11,11 @@
   [金山云移动广告Android SDK常见问题FAQ](https://github.com/ksc-gec/ksc-ad-sdk-android/blob/master/sdk_doc_cn/%E9%87%91%E5%B1%B1%E4%BA%91%E7%A7%BB%E5%8A%A8%E5%B9%BF%E5%91%8AAndroid%20SDK%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98FAQ.pdf)
 
   英文版：
+
   [KingSoft Ksyun Mobile Advertising Android SDK Quick Access Document](https://github.com/ksc-gec/ksc-ad-sdk-android/blob/master/sdk_doc_en/KingSoft%20Ksyun%20Mobile%20Advertising%20Android%20SDK%20Quick%20Access%20Document%20V4.0.3.pdf)
   
 ## 版本更新记录
-[当前最新版本- 4.0.7](https://github.com/ksc-gec/ksc-ad-sdk-android/tree/master/AD_SDK_DEMO)
+[当前最新版本： 4.0.7](https://github.com/ksc-gec/ksc-ad-sdk-android)
 
 **版本 4.0.7 [2018/8/20]** 
 1. 修改file_paths名称，改为ksyun_file_paths
