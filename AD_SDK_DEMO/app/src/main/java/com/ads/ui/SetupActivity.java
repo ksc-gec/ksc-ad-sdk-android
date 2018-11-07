@@ -36,6 +36,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
     private Spinner mEnvSpinner;
     private Switch mIsShowSwitch;
     private EditText mShowTimeEt;
+    private EditText mSplashSlotId;
     private Switch mMobileLoadSwitch;
 
 
@@ -56,6 +57,7 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         mShowTimeEt = findViewById(R.id.setup_show_second_et);
         mClearCacheTv = findViewById(R.id.ac_setup_clear_cache_tv);
         mMobileLoadSwitch = findViewById(R.id.setup_load_4g);
+        mSplashSlotId = findViewById(R.id.setup_Splash_slotId_et);
         mClearCacheTv.setOnClickListener(this);
         mArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 DemoConstants.envArray);
@@ -81,6 +83,8 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
         mMobileLoadSwitch.setChecked(PreferencesUtil.getBoolean(this, DemoConstants
                         .KEY_SDK_CLOSE_MOBILE_LOAD,
                 DemoConstants.VALUE_SDK_CLOSE_MOBILE_LOAD));
+        mSplashSlotId.setHint(String.valueOf(PreferencesUtil.getString(this, DemoConstants.KEY_SDK_SPLASH_SLOT_ID,
+                "")));
 
     }
 
@@ -114,6 +118,10 @@ public class SetupActivity extends AppCompatActivity implements View.OnClickList
             PreferencesUtil.putBoolean(this, DemoConstants.KEY_SDK_CLOSE_MOBILE_LOAD,
                     mMobileLoadSwitch.isChecked());
 
+            String splashAdSlotId = mSplashSlotId.getText().toString();
+            if (!TextUtils.isEmpty(splashAdSlotId)) {
+                PreferencesUtil.putString(this, DemoConstants.KEY_SDK_SPLASH_SLOT_ID, splashAdSlotId.trim());
+            }
             showToast("配置保存成功");
             finish();
         } else if (id == mClearCacheTv.getId()) {

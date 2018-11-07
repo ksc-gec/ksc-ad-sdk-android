@@ -44,6 +44,9 @@ public class DemoConstants {
      */
     public static final String KEY_SDK_SPLASH_SLOT_ID = "key_sdk_splash_slot_id";
 
+    //sdk 开屏广告位id 默认值
+    public static final String VALUE_ADSLOT_ID ="d3b0f7cf";
+
     //activity跳转key
     public static final String KEY_AD_INFO = "key_ad_info";
 

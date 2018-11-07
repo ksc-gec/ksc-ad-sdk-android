@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.ads">
+<manifest package="com.ads"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
@@ -27,13 +27,19 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.ads.ui.MainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize">
+            android:name="com.ads.ui.SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.ads.ui.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity
             android:name="com.ads.ui.SetupActivity"
             android:screenOrientation="portrait"/>
@@ -48,7 +54,6 @@
         <activity
             android:name="com.ads.ui.AdInfoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
-
         <provider
             android:name="com.ksc.ad.sdk.util.KsyunFileProvider"
             android:authorities="${applicationId}.fileprovider"

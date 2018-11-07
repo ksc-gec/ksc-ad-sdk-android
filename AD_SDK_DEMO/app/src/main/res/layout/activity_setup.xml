@@ -131,6 +131,31 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Set up Splash slotId"
+                    android:textColor="@color/color_000000"
+                    android:textSize="16dp"/>
+
+                <EditText
+                    android:id="@+id/setup_Splash_slotId_et"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:ems="6"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textColorHint="@color/color_888888"/>
+
+            </RelativeLayout>
+
         </LinearLayout>
 
         <TextView
